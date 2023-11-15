@@ -1,0 +1,16 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: hello-sc-alibaba-config
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+      config:
+        refresh-enabled: true  #该版本默认为true
+
+author:
+  name: 高斯林

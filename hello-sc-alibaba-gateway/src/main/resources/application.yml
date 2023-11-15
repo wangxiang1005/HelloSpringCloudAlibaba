@@ -1,0 +1,40 @@
+server:
+  port: 5000
+
+spring:
+  application:
+    name: hello-sc-alibaba-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+          lowerCaseServiceId: true
+      routes:
+        - id: hello-sc-alibaba-order
+          uri: lb://hello-sc-alibaba-order
+          predicates:
+            - Path=/hello-sc-alibaba-order/**
+          filters:
+            - StripPrefix=1
+        - id: hello-sc-alibaba-customer
+          uri: lb://hello-sc-alibaba-customer
+          predicates:
+            - Path=/hello-sc-alibaba-customer/**
+          filters:
+            - StripPrefix=1
+        - id: hello-sc-alibaba-config
+          uri: lb://hello-sc-alibaba-config
+          predicates:
+            - Path=/hello-sc-alibaba-config/**
+          filters:
+            - StripPrefix=1
+        - id: hello-sc-alibaba-express
+          uri: lb://hello-sc-alibaba-express
+          predicates:
+            - Path=/hello-sc-alibaba-express/**
+          filters:
+            - StripPrefix=1
