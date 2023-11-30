@@ -28,7 +28,7 @@ public class CustomerController {
     @GetMapping("/buy")
     public String buyBooks(@RequestParam(value = "name", defaultValue = "Java编程思想",required = false) String name) {
         System.out.println("=========name=========>>>>>>>>>>>>>"+name);
-        log.info("hello-sc-alibaba-customer traceId:{}", TraceContext.traceId());
+        System.out.printf("hello-sc-alibaba-customer traceId:{%s}", TraceContext.traceId());
 
         String authorName = configClient.getBookAuthor(name);
         System.out.println("=========authorName=========>>>>>>>>>>>>>"+authorName);

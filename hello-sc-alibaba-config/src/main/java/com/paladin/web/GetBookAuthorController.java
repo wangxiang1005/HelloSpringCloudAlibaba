@@ -20,7 +20,7 @@ public class GetBookAuthorController {
 
     @GetMapping(value = "/getBookAuthor")
     public String getBookAuthor(@RequestParam(value = "name", defaultValue = "Java编程思想",required = false) String name) {
-        log.info("hello-sc-alibaba-config traceId:{}", TraceContext.traceId());
+        System.out.printf("hello-sc-alibaba-config traceId:{%s}", TraceContext.traceId());
         StringBuilder sBuilder = new StringBuilder();
         sBuilder.append("<<");
         sBuilder.append(name);

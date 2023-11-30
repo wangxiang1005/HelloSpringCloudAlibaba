@@ -1,4 +1,5 @@
-# hello-sc-alibaba-config （nacos作为配置中心）
+# hello-sc-alibaba-config （配置子系统）
+**nacos作为配置中心**
 author.name=马丁
 hello-sc-alibaba-config.properties
 

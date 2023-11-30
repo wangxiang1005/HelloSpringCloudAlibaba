@@ -27,7 +27,7 @@ public class ExpressApplication {
     public String sendExpress(@RequestParam(value = "name", defaultValue = "Java编程思想",required = false) String name) {
         System.out.println("===========name===========>>>>>>>"+name);
         System.out.println("===========port===========>>>>>>>"+port);
-        log.info("hello-sc-alibaba-express traceId:{}", TraceContext.traceId());
+        System.out.printf("hello-sc-alibaba-express traceId:{%s}", TraceContext.traceId());
         return "8911000002345";
     }
 }
