@@ -8,5 +8,5 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface ConfigClient {
 
     @GetMapping("/config/getBookAuthor")
-    String getBookAuthor(@RequestParam(value = "name", defaultValue = "Java编程思想", required = false) String name);
+    String getBookAuthor(@RequestParam(value = "name", defaultValue = "JavaBook", required = false) String name);
 }

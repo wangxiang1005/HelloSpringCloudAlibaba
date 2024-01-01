@@ -8,5 +8,5 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface ExpressClient {
 
     @GetMapping("/sendExpress")
-    String sendExpress(@RequestParam(value = "name", defaultValue = "Java编程思想", required = false) String name);
+    String sendExpress(@RequestParam(value = "name", defaultValue = "JavaBook", required = false) String name);
 }

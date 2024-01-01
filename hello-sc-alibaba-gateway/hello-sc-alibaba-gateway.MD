@@ -1,3 +1,9 @@
 # hello-sc-alibaba-gateway （网关子系统）
 
-http://127.0.0.1:5000/hello-sc-alibaba-customer/book/buy?name=%22Go%E5%AE%9D%E5%85%B8%22
+http://127.0.0.1:5000/hello-sc-alibaba-customer/buy/book?name=JavaBook
+
+http://127.0.0.1:5000/hello-sc-alibaba-customer/buy/book?name=PythonBook
+
+http://127.0.0.1:5000/hello-sc-alibaba-customer/buy/book?name=KissABC
+
+http://127.0.0.1:5000/hello-sc-alibaba-customer/buy/book?name=StopTheWorld

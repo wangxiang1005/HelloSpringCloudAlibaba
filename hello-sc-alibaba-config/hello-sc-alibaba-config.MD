@@ -3,4 +3,12 @@
 author.name=马丁
 hello-sc-alibaba-config.properties
 
-http://127.0.0.1:8761/config/getBookAuthor?name=%27Go%E5%AE%9D%E5%85%B8%27
+http://127.0.0.1:8761/config/getBookAuthor
+
+http://127.0.0.1:8761/config/getBookAuthor?name=JavaBook
+
+http://127.0.0.1:8761/config/getBookAuthor?name=PythonBook
+
+http://127.0.0.1:8761/config/getBookAuthor?name=KissABC
+
+http://127.0.0.1:8761/config/getBookAuthor?name=StopTheWorld
