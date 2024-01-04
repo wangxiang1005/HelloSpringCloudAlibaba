@@ -23,6 +23,10 @@ public class GetBookAuthorController {
         System.out.println("=====name=====>>>>>>>>>"+name);
         System.out.println("=====authorName=====>>>>>>>>>"+authorName);
 
+        log.debug("1111111111111111111111");
+        log.info("222222222222222222222222222");
+        log.error("3333333333333333333333333333333");
+
         if("KissABC".equals(name)){
             return "";
         }

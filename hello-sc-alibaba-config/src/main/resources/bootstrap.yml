@@ -8,7 +8,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 127.0.0.1:8848
+        server-addr: 10.0.99.142:8848
       config:
         refresh-enabled: true  #该版本默认为true
         #file-extension: yaml  #该配置添加yaml配置文件支持, 添加后就只支持yaml后缀的配置

@@ -22,6 +22,17 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+            <version>2.5.2</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
@@ -50,9 +61,18 @@
             <version>1.18.30</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <groupId>com.ccdc.numen.apm</groupId>
+            <artifactId>apm-toolkit-trace</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${pom.basedir}/lib/apm-toolkit-trace-activation-1.0.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.ccdc.numen.apm</groupId>
+            <artifactId>apm-toolkit-log4j-2.x</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${pom.basedir}/lib/apm-toolkit-log4j-2.x-activation-1.0.0.jar</systemPath>
         </dependency>
     </dependencies>
 </project>
