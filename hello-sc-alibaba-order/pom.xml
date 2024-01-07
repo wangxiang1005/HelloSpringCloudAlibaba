@@ -40,5 +40,19 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.ccdc.numen.apm</groupId>
+            <artifactId>apm-toolkit-trace</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${pom.basedir}/lib/apm-toolkit-trace-1.0.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.ccdc.numen.apm</groupId>
+            <artifactId>apm-toolkit-logback-1.x</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${pom.basedir}/lib/apm-toolkit-logback-1.x-1.0.0.jar</systemPath>
+        </dependency>
     </dependencies>
 </project>

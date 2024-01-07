@@ -1,18 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="fatal">
+<Configuration status="info" monitorInterval="30" strict="true" packages="com.ccdc.numen.apm.toolkit.activation.log.log4j.v2.x">
     <Properties>
         <Property name="baseDir" value="/home/user/Hello/logs"/>
     </Properties>
 
     <Appenders>
+        <GRPCLogClientAppender name="grpc-log">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%traceId] %-5level %logger{36} - %msg%n"/>
+        </GRPCLogClientAppender>
+
         <Console name="Console" target="SYSTEM_OUT">
-            <!--控制台只输出level及以上级别的信息(onMatch),其他的直接拒绝(onMismatch) -->
-            <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
-            <PatternLayout pattern="[%d{MM:dd HH:mm:ss.SSS}] [%level] [%logger{36}] - %msg%n"/>
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%traceId] %-5level %logger{36} - %msg%n"/>
         </Console>
 
-        <!--info级别日志文件输出-->
-        <RollingFile name="Appender" fileName="${baseDir}/hello-sc-alibaba-config.log"
+        <RollingFile name="info-appender"
+                     fileName="${baseDir}/hello-sc-alibaba-config.log"
                      filePattern="${baseDir}/hello-sc-alibaba-config.%i.log.%d{yyyy-MM-dd}">
             <!-- 过滤器 -->
             <Filters>
@@ -20,7 +21,7 @@
                 <ThresholdFilter level="info"/>
             </Filters>
             <!-- 日志格式 -->
-            <PatternLayout pattern="[%d{HH:mm:ss:SSS}] [%p] - %l - %m%n"/>
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%traceId] %-5level %logger{36} - %msg%n"/>
             <!-- 策略 -->
             <Policies>
                 <!-- 每隔一天转存 -->
@@ -29,16 +30,19 @@
                 <SizeBasedTriggeringPolicy size="100 MB"/>
             </Policies>
         </RollingFile>
-
-        <GRPCLogClientAppender name="grpc-log">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
-        </GRPCLogClientAppender>
     </Appenders>
-
     <Loggers>
-        <Root level="debug">
+        <logger name="com.a.eye.skywalking.ui" level="info" additivity="false">
             <AppenderRef ref="Console"/>
-            <AppenderRef ref="Appender"/>
+            <AppenderRef ref="grpc-log"/>
+        </logger>
+
+        <logger name="org.apache.kafka" level="OFF"></logger>
+        <logger name="org.apache.skywalking.apm.dependencies" level="OFF"></logger>
+
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="info-appender"/>
             <AppenderRef ref="grpc-log"/>
         </Root>
     </Loggers>

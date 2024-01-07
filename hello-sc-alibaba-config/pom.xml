@@ -35,6 +35,11 @@
             <version>2.5.2</version>
         </dependency>
         <dependency>
+            <groupId>com.lmax</groupId>
+            <artifactId>disruptor</artifactId>
+            <version>3.4.2</version>
+        </dependency>
+        <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
@@ -65,14 +70,41 @@
             <artifactId>apm-toolkit-trace</artifactId>
             <version>1.0.0</version>
             <scope>system</scope>
-            <systemPath>${pom.basedir}/lib/apm-toolkit-trace-activation-1.0.0.jar</systemPath>
+            <systemPath>${pom.basedir}/lib/apm-toolkit-trace-1.0.0.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.ccdc.numen.apm</groupId>
             <artifactId>apm-toolkit-log4j-2.x</artifactId>
             <version>1.0.0</version>
             <scope>system</scope>
-            <systemPath>${pom.basedir}/lib/apm-toolkit-log4j-2.x-activation-1.0.0.jar</systemPath>
+            <systemPath>${pom.basedir}/lib/apm-toolkit-log4j-2.x-1.0.0.jar</systemPath>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <includeSystemScope>true</includeSystemScope>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
