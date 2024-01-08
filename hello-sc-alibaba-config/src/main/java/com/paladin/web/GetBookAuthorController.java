@@ -19,23 +19,18 @@ public class GetBookAuthorController {
 
     @GetMapping(value = "/getBookAuthor")
     public String getBookAuthor(@RequestParam(value = "name", defaultValue = "JavaBook",required = false) String name) {
-
-        System.out.println("=====name=====>>>>>>>>>"+name);
-        System.out.println("=====authorName=====>>>>>>>>>"+authorName);
-
-        log.debug("======debug=====getBookAuthor===========>>>>>");
-        log.info("=======info====getBookAuthor===========>>>>>");
-        log.error("======error=====getBookAuthor===========>>>>>");
-
-        //GRPCLogClientAppender gRPCLogClientAppender = null;
-
+        log.info("======info=====getBookAuthor====name=======>>>>>"+name);
         if("KissABC".equals(name)){
             return "";
         }
 
+        if("kill".equals(name)){
+            throw new RuntimeException("name is not correct!");
+        }
+
         if("StopTheWorld".equals(name)){
             try {
-                Thread.sleep(3 * 1000);
+                Thread.sleep(4 * 1000);
                 authorName = "HeiKe";
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
@@ -46,6 +41,7 @@ public class GetBookAuthorController {
         sBuilder.append(name);
         sBuilder.append("的作者是：");
         sBuilder.append(authorName);
+        log.info("======info=====getBookAuthor====sBuilder=======>>>>>"+sBuilder.toString());
         return sBuilder.toString();
     }
 }

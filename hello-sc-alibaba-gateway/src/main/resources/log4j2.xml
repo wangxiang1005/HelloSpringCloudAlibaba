@@ -1,0 +1,49 @@
+<Configuration status="info" monitorInterval="30" strict="true" packages="com.ccdc.numen.apm.toolkit.activation.log.log4j.v2.x">
+    <Properties>
+        <Property name="baseDir" value="/home/user/Hello/logs"/>
+    </Properties>
+
+    <Appenders>
+        <GRPCLogClientAppender name="grpc-log">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%traceId] %-5level %logger{36} - %msg%n"/>
+        </GRPCLogClientAppender>
+
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%traceId] %-5level %logger{36} - %msg%n"/>
+        </Console>
+
+        <RollingFile name="info-appender"
+                     fileName="${baseDir}/hello-sc-alibaba-gateway.log"
+                     filePattern="${baseDir}/hello-sc-alibaba-gateway.%i.log.%d{yyyy-MM-dd}">
+            <!-- 过滤器 -->
+            <Filters>
+                <!-- 限制日志级别在info及以上 -->
+                <ThresholdFilter level="info"/>
+            </Filters>
+            <!-- 日志格式 -->
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%traceId] %-5level %logger{36} - %msg%n"/>
+            <!-- 策略 -->
+            <Policies>
+                <!-- 每隔一天转存 -->
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <!-- 文件大小 -->
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <logger name="com.a.eye.skywalking.ui" level="info" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="grpc-log"/>
+        </logger>
+
+        <logger name="org.apache.kafka" level="OFF"></logger>
+        <logger name="org.apache.skywalking.apm.dependencies" level="OFF"></logger>
+
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="info-appender"/>
+            <AppenderRef ref="grpc-log"/>
+        </Root>
+    </Loggers>
+</Configuration>

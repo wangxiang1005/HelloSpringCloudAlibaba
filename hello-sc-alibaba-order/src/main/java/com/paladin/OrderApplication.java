@@ -25,14 +25,8 @@ public class OrderApplication {
 
     @GetMapping("/sendOrder")
     public String sendOrder(@RequestParam(value = "name", defaultValue = "JavaBook",required = false) String name) {
-        System.out.println("===========name===========>>>>>>>"+name);
-        System.out.println("===========port===========>>>>>>>"+port);
-
-        log.debug("======debug=====sendOrder===========>>>>>");
-        log.info("=======info====sendOrder===========>>>>>");
-        log.error("======error=====sendOrder===========>>>>>");
-
+        log.info("======info=====sendOrder====name=======>>>>>"+name);
         Random random = new Random(1000000000);
-        return "订单编号：" + random.nextLong();
+        return "Order ID：" + random.nextLong();
     }
 }

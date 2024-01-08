@@ -26,17 +26,17 @@ public class CustomerController {
 
     @GetMapping("/book")
     public String buyBooks(@RequestParam(value = "name", defaultValue = "JavaBook",required = false) String name) {
-        System.out.println("=========name=========>>>>>>>>>>>>>"+name);
+        log.info("======info=====buyBooks====name=======>>>>>"+name);
 
         String authorName = configClient.getBookAuthor(name);
-        System.out.println("=========authorName=========>>>>>>>>>>>>>"+authorName);
+        log.info("======info=====buyBooks====authorName=======>>>>>"+authorName);
 
         if(!"".equals(authorName) && authorName != null){
             String orderID = orderClient.sendOrder(name);
-            System.out.println("=========orderID=========>>>>>>>>>>>>>"+orderID);
+            log.info("======info=====buyBooks====orderID=======>>>>>"+orderID);
             if(!"".equals(orderID)){
                 String expressID = expressClient.sendExpress(name);
-                System.out.println("=========expressID=========>>>>>>>>>>>>>"+expressID);
+                log.info("======info=====buyBooks====expressID=======>>>>>"+expressID);
                 return "商品 "+ name +" 已下单, 正在配送中, 配送单号："+expressID;
             }
         }

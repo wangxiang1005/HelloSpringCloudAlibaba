@@ -25,14 +25,8 @@ public class ExpressApplication {
 
     @GetMapping("/sendExpress")
     public String sendExpress(@RequestParam(value = "name", defaultValue = "JavaBook",required = false) String name) {
-        System.out.println("===========name===========>>>>>>>"+name);
-        System.out.println("===========port===========>>>>>>>"+port);
-
-        log.debug("======debug=====sendExpress===========>>>>>");
-        log.info("=======info====sendExpress===========>>>>>");
-        log.error("======error=====sendExpress===========>>>>>");
-
+        log.info("======info=====sendExpress====name=======>>>>>"+name);
         Random random = new Random(1000000000);
-        return "快递编号：" + random.nextLong();
+        return "Express ID：" + random.nextLong();
     }
 }
