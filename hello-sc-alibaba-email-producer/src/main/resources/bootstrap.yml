@@ -1,0 +1,22 @@
+server:
+  port: 8767
+
+spring:
+  application:
+    name: hello-sc-alibaba-email-producer
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 10.0.99.142:8848
+        namespace: public
+        username: nacos
+        password: nacos
+        group: DEFAULT_GROUP
+
+  rabbitmq:
+    host: 10.0.99.142
+    username: admin
+    password: 123456
+    port: 5672
+    virtual-host: /

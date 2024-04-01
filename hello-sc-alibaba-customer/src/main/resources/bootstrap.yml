@@ -1,14 +1,14 @@
 server:
-  port: 8763
+  port: 8762
 
 spring:
   application:
-    name: hello-sc-alibaba-express
+    name: hello-sc-alibaba-customer
 
   cloud:
     nacos:
       discovery:
-        server-addr: 192.168.5.179:8848
+        server-addr: 10.0.99.142:8848
         namespace: public
         username: nacos
         password: nacos

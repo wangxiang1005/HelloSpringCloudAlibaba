@@ -1,0 +1,14 @@
+server:
+  port: 8763
+
+spring:
+  application:
+    name: hello-sc-alibaba-express
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 10.0.99.142:8848
+        namespace: public
+        username: nacos
+        password: nacos

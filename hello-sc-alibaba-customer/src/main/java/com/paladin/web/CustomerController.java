@@ -2,6 +2,7 @@ package com.paladin.web;
 
 import com.paladin.client.ConfigClient;
 import com.paladin.client.ExpressClient;
+import com.paladin.client.NoticeClient;
 import com.paladin.client.OrderClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,9 @@ public class CustomerController {
     @Autowired
     ExpressClient expressClient;
 
+    @Autowired
+    NoticeClient noticeClient;
+
     @GetMapping("/book")
     public String buyBooks(@RequestParam(value = "name", defaultValue = "JavaBook",required = false) String name) {
         log.info("======info=====buyBooks====name=======>>>>>"+name);
@@ -37,7 +41,12 @@ public class CustomerController {
             if(!"".equals(orderID)){
                 String expressID = expressClient.sendExpress(name);
                 log.info("======info=====buyBooks====expressID=======>>>>>"+expressID);
-                return "商品 "+ name +" 已下单, 正在配送中, 配送单号："+expressID;
+
+                if(!"".equals(expressID)){
+                    String noticeID = noticeClient.sendNotice(name);
+                    log.info("======info=====buyBooks====noticeID=======>>>>>"+noticeID);
+                    return "商品 "+ name +" 已配送, 通知单号："+noticeID;
+                }
             }
         }
         return "商品购买失败";
